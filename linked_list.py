@@ -30,6 +30,28 @@ class LinkedList():
         else:
             return 'The list is empty'
 
+    def __getitem__(self, i):
+        if i < 0:
+            i = self.length + i
+        if i > self.length or i < 0:
+            return 'list index out of range'
+        else:
+            current = self.first
+            for j in range(self.length):
+                if i == j:
+                    return current
+                current = current.next
+
+    def __iter__(self):
+        current = self.first
+        while current.next != None:
+            yield current
+            current = current.next
+        raise StopIteration
+
+    def __len__(self):
+        return self.length         
+
     def random(self, minimal=3, maximal=10):
         for i in range(choice(range(minimal, maximal))):
             self.add(choice(range(10)))
