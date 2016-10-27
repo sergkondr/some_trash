@@ -3,7 +3,7 @@ from random import choice
 class Element():
     def __init__(self, value, prev = None, next = None):
         self.value = value
-        self.next = next
+        self.next_element = next
         self.prev = prev
 
     def __str__(self):
