@@ -4,19 +4,21 @@ from math import sqrt
 import numpy as np
 import matplotlib.pyplot as plt
 
-ABC = '0123456789ABCDEF'
+from pylab import rcParams
+rcParams['figure.figsize'] = 10, 10
 
 cluster_radius = 20
 
 class Node():
+    ABC = '0123456789ABCDEF'
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.title = ''.join(choice(ABC) for x in range(4))
+        self.title = ''.join(choice(self.ABC) for x in range(4))
 
 def in_cluster(node1, node2):
     distance = sqrt(pow((node1.x - node2.x), 2) + pow((node1.y - node2.y), 2))
-    if distance <= cluster_radius:
+    if distance < cluster_radius:
         return True
     else:
         return False
